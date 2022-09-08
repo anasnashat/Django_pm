@@ -16,12 +16,13 @@ class ProjectStatus(models.IntegerChoices):
     POSTPONED = 3, "Postponed"
     CANCELED = 4, "Canceled"
 
+
 class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     status = models.IntegerField(
-        choices= ProjectStatus.choices,
-        default= ProjectStatus.PENDING
+        choices=ProjectStatus.choices,
+        default=ProjectStatus.PENDING
     )
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
