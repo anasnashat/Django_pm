@@ -45,23 +45,16 @@ class CreatTaskView(CreateView):
 
 
 class UpdateTaskView(UpdateView):
-    models = models.Task
+    model = models.Task
     fields = ["is_completed"]
     http_method_names = ['post']
-
-    def get_queryset(self):
-        return models.Task.objects.all()
 
     def get_success_url(self):
         return reverse('projects_update', args=[self.object.project.id])
 
 
 class DeleteTaskView(DeleteView):
-    models = models.Task
-
-    # success_url = reverse_lazy("projects_update")
-    def get_queryset(self):
-        return models.Task.objects.all()
+    model = models.Task
 
     def get_success_url(self):
         return reverse("projects_update", args=[self.object.project.id])
