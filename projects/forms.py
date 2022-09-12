@@ -1,15 +1,18 @@
 from django import forms
 from . import models
 
+attrs = {
+    "class":"form-control"
+}
 
 class ProjectCreatForm(forms.ModelForm):
     class Meta:
         model = models.Project
         fields = ["title", "description", "category"]
         widgets = {
-            'title': forms.TextInput(),
-            'description': forms.Textarea(),
-            'category': forms.Select(),
+            'title': forms.TextInput(attrs=attrs),
+            'description': forms.Textarea(attrs=attrs),
+            'category': forms.Select(attrs=attrs),
         }
 
 
@@ -18,8 +21,8 @@ class ProjectUpdateForm(forms.ModelForm):
         model = models.Project
         fields = ["title", "category", "status"]
         widgets = {
-            "title": forms.TextInput(),
-            "category": forms.Select(),
-            "status": forms.Select(),
+            "title": forms.TextInput(attrs=attrs),
+            "category": forms.Select(attrs=attrs),
+            "status": forms.Select(attrs=attrs),
 
         }

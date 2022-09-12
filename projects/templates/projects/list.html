@@ -1,14 +1,63 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load humanize %}
 
 {% block content %}
-    <h3>{%  trans "My Project" %} </h3>
-    <ul>
-        {% for project in object_list %}
-            <li>{{ project.title }} <a href="{% url 'projects_update' project.id %}"> Edite </a> </li>
+    <div class=" d-flex">
+        <h3 class="me-auto">
+            {% trans "My Projects" %}
+        </h3>
+        <div>
+            <a href="{% url 'projects_creat' %}" class="btn btn-outline-success" {% if object_list.count == 0 %} hidden="true" {% endif %}">
+                <i class="bi bi-plus-lg "></i> {% trans "New Project" %}
+            </a>
 
-        {% empty %}
-            <li> {% trans "You Have  No Projects" %}</li>
-        {% endfor %}
-    </ul>
+        </div>
+    </div>
+    <div class="row my-5">
+	{% for project in object_list %}
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<p>
+					<span class="badge rounded-pill bg-dark">
+						{{project.get_status_display}}
+					</span>
+				</p>
+				<h5 class="card-title fs-6">{{ project.title}}</h5>
+				<p class="card-text test-muted small">{{ project.description }}</p>
+                <div class="d-flex">
+                    <span class="me-auto text-muted small">
+                        <i class="bi bi-clock"></i>
+                        <time datetime="{{ project.create_at }}">
+                            {{ project.create_at|naturaltime }}
+                        </time>
+                    </span>
+                    <a class="btn btn-sm btn-outline-dark mx-1" href="{% url 'projects_update' project.id %}">
+                        {% trans "Edit" %}
+                    </a>
+                    <a class="btn btn-sm btn-outline-danger" href="{% url 'projects_delete' project.id %}">
+                        {% trans "Delete" %}
+                    </a>
+                </div>
+			</div>
+		</div>
+	</div>
+
+    {% empty %}
+        <div class="col-md-12">
+            <div class="h-100 p-5 bg-white border rounded-3 text-center">
+                <p >{% trans "There is no projects to show" %}</p>
+                <p><i class="bi bi-emoji-frown fs-1"></i></p>
+
+                <a href="{% url 'projects_creat' %}" class="btn btn-success">
+                    <i class="bi bi-plus-lg "></i> {% trans "New Project" %}
+                </a>
+
+
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
