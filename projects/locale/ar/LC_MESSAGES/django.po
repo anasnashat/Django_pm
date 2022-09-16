@@ -49,11 +49,11 @@ msgstr "ألغيت"
 
 #: .\projects\templates\partials\footer.html:6
 msgid "(c) Anas Nashat 2022. "
-msgstr ""
+msgstr "جميع الحقوق محفوظة © أنس نشات 2022"
 
 #: .\projects\templates\partials\navbar.html:6
 msgid "Project Management"
-msgstr "ادارة مشروع"
+msgstr "إدارة المشاريع"
 
 #: .\projects\templates\partials\navbar.html:13
 msgid "Home"
@@ -115,11 +115,11 @@ msgstr "التالي"
 
 #: .\projects\templates\projects\task.html:32
 msgid "New Task"
-msgstr ""
+msgstr "مهمة جديدة"
 
 #: .\projects\templates\projects\task.html:33
 msgid "Add"
-msgstr "مهمة جديدة"
+msgstr "اضافة"
 
 #: .\projects\templates\projects\update.html:37
 msgid "Save"

@@ -3,7 +3,6 @@ from django.db.models import Count
 
 from . import models
 
-
 # Register your models here.
 
 

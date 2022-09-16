@@ -33,15 +33,15 @@
                           type="text"
                           name="q"
                           class="form-control"
-                          placeholder="Search"
+                          placeholder="{% trans  "Search" %}"
                           value="{{ request.GET.q }}"
                   />
                   <button class="btn btn-outline-light" type="submit" ><i class="bi bi-search"></i></button>
               </div>
             </form>
         {% else %}
-            <a class="btn btn-outline-light me-3" href="{% url 'register' %}"> Register</a>
-            <a class="btn btn-outline-light" href="{% url 'login' %}"> LogIn</a>
+            <a class="btn btn-outline-light me-3" href="{% url 'register' %}"> {% trans 'Register' %}</a>
+            <a class="btn btn-outline-light" href="{% url 'login' %}"> {% trans 'LogIn' %}</a>
         {% endif %}
 
     </div>
