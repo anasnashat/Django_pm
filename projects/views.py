@@ -16,7 +16,7 @@ class ListProjectsView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         query_set = super().get_queryset()
-        where = {"ser_id": self.request.user}
+        where = {"user_id": self.request.user}
         q = self.request.GET.get('q', None)
         if q:
             where['title__contains'] = q
@@ -30,7 +30,7 @@ class CreateProjectView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("projects_list")
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.user = self.request.user.id
         return super().form_valid(form)
 
 
@@ -40,7 +40,7 @@ class DeleteProjectView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy("projects_list")
 
     def test_func(self):
-        return self.get_object().user_id == self.request.user
+        return self.get_object().user_id == self.request.user.id
 
 
 class UpdateProjectView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -49,7 +49,7 @@ class UpdateProjectView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "projects/update.html"
 
     def test_func(self):
-        return self.get_object().user_id == self.request.user
+        return self.get_object().user_id == self.request.user.id
 
     # success_url = reverse_lazy("projects_list")
     def get_success_url(self):
@@ -63,7 +63,7 @@ class CreatTaskView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def test_func(self):
         project_id = self.request.POST.get('project', '')
-        return models.Project.objects.get(pk=project_id) == self.request.user.id
+        return models.Project.objects.get(pk=project_id).user_id == self.request.user.id
 
     def get_success_url(self):
         return reverse("projects_update", args=[self.object.project.id])

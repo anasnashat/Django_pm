@@ -11,7 +11,7 @@
 				<form method="post">
 					{% csrf_token %}
                     {% include "common/forms.html" with form=form  %}
-                    <button class="btn btn-success"> {% translate "Create" %}</button>
+                    <button class="btn btn-success"> {% trans "Create" %}</button>
 				</form>
 		</div>
 	</div>
