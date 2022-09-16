@@ -15,7 +15,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_select_related = ['category', 'user']
 
     def tasks_count(self, obj):
-        return obj.task_count.count()
+        return obj.task_set.count()
 
     def get_queryset(self, request):
         query = super().get_queryset(request)
