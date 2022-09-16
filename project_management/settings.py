@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import mimetypes
+import os.path
 from pathlib import Path
 import psycopg2
 
@@ -25,7 +26,9 @@ SECRET_KEY = "django-insecure-kzjmy$=eima#xi4lyyw7%b!girwar3!tm06y7!9)3z5w^&jn&w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://django-project-management.herokuapp.com/', 'http://127.0.0.1',
+]
 
 # Application definition
 
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -79,11 +83,11 @@ WSGI_APPLICATION = "project_management.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "Django_pm",
-        "USER": 'postgres',
-        "PASSWORD": "anas01060",
-        "HOST": "localhost",
-        "PORT": ""
+        "NAME": "de30q2r88dm4ju",
+        "USER": 'odlxteqhwlothl',
+        "PASSWORD": "79a7c94b0bf418b644c8b29a9c09245ac017de2c6b101ed29cd0a9a2b292d561",
+        "HOST": "ec2-3-93-206-109.compute-1.amazonaws.com",
+        "PORT": "5432"
     }
 }
 
@@ -130,6 +134,9 @@ mimetypes.add_type("application/javascript", ".js", True)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
