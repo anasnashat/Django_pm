@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-kzjmy$=eima#xi4lyyw7%b!girwar3!tm06y7!9)3z5w^&jn&w
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-project-management.herokuapp.com', '127.0.0.1', '*'
+    '127.0.0.1', '*'
 ]
 
 # Application definition
