@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-kzjmy$=eima#xi4lyyw7%b!girwar3!tm06y7!9)3z5w^&jn&w
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-project-management.herokuapp.com', '127.0.0.1',
+    'django-project-management.herokuapp.com', '127.0.0.1', '*'
 ]
 
 # Application definition
@@ -83,11 +83,11 @@ WSGI_APPLICATION = "project_management.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "de30q2r88dm4ju",
-        "USER": 'odlxteqhwlothl',
-        "PASSWORD": "79a7c94b0bf418b644c8b29a9c09245ac017de2c6b101ed29cd0a9a2b292d561",
-        "HOST": "ec2-3-93-206-109.compute-1.amazonaws.com",
-        "PORT": "5432"
+        "NAME": "",
+        "USER": '',
+        "PASSWORD": "",
+        "HOST": "",
+        "PORT": ""
     }
 }
 
